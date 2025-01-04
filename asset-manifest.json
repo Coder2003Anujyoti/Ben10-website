@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Coder2003Anujyoti/Ben10-website/static/css/main.7aa222c0.css",
-    "main.js": "/Coder2003Anujyoti/Ben10-website/static/js/main.fc24f738.js",
-    "static/js/453.8ab44547.chunk.js": "/Coder2003Anujyoti/Ben10-website/static/js/453.8ab44547.chunk.js",
-    "index.html": "/Coder2003Anujyoti/Ben10-website/index.html",
-    "main.7aa222c0.css.map": "/Coder2003Anujyoti/Ben10-website/static/css/main.7aa222c0.css.map",
-    "main.fc24f738.js.map": "/Coder2003Anujyoti/Ben10-website/static/js/main.fc24f738.js.map",
-    "453.8ab44547.chunk.js.map": "/Coder2003Anujyoti/Ben10-website/static/js/453.8ab44547.chunk.js.map"
+    "main.css": "/Ben10-website/static/css/main.7aa222c0.css",
+    "main.js": "/Ben10-website/static/js/main.776ae931.js",
+    "static/js/453.8ab44547.chunk.js": "/Ben10-website/static/js/453.8ab44547.chunk.js",
+    "index.html": "/Ben10-website/index.html",
+    "main.7aa222c0.css.map": "/Ben10-website/static/css/main.7aa222c0.css.map",
+    "main.776ae931.js.map": "/Ben10-website/static/js/main.776ae931.js.map",
+    "453.8ab44547.chunk.js.map": "/Ben10-website/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7aa222c0.css",
-    "static/js/main.fc24f738.js"
+    "static/js/main.776ae931.js"
   ]
 }
