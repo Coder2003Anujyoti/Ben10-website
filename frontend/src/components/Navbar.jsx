@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 function Navbar(){
+  const [count,setCount]=useState(0);
   const [datas,setDatas]=useState([]);
    const [text,setText]=useState("");
    const [items,setItems]=useState([]);
@@ -11,6 +12,7 @@ function Navbar(){
      const data =await res.json();
      setDatas(data);
      setLoad(true);
+     setCount(count+1);
    }
    const getaliens=async()=>{
      const res=await fetch(`https://ben10-website.onrender.com/api/aliens?offset=${offset}&limit=5`);
@@ -46,6 +48,11 @@ function Navbar(){
     </div>
     <div className="my-2">
     {load==false && text!='' && <>
+      <div className=" w-full flex  justify-center align-center my-48  md:my-32">
+      <h1 className="font-bold " >Page is Loading...</h1>
+      </div>
+    </>}  
+        {load==false && count==0 && text=='' && <>
       <div className=" w-full flex  justify-center align-center my-48  md:my-32">
       <h1 className="font-bold " >Page is Loading...</h1>
       </div>
