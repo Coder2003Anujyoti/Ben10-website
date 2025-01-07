@@ -36,7 +36,7 @@ function Navbar(){
      setOffset(offset+5)
    }
   return(<>
-    <div className="w-full h-16 bg-green-600 flex items-center gap-x-6 md:gap-x-64">
+    <div className="w-full h-16 bg-green-600 flex items-center gap-x-6 lg:gap-x-64">
       <div>
         <img src="images/Ben.png" className="w-16 h-16 m-2"/>
       </div>
