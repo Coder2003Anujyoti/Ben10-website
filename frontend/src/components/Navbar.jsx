@@ -58,7 +58,7 @@ function Navbar(){
       </div>
     </>}  
     <div className=" flex justify-around flex-wrap gap-y-4 md:flex md:flex-row md:flex-wrap  md:justify-start md:mx-16 md:gap-x-2">
-      {text!='' && datas.map((alien) => {
+      {text!='' && load==true && datas.map((alien) => {
        return(<>
         <div className="bg-white rounded-lg text-center p-1 border shadow-lg shadow-green-500/30 hover:scale-105 font-bold hover:ease-in-out duration-300 md:p-4 md:max-h-fit"  key={alien.id}>
           <img className="h-40 w-32"
@@ -70,7 +70,7 @@ function Navbar(){
         </div>
         </>)
       })}
-       {text=='' && items.map((alien,index) => {
+       {text=='' && load==true && items.map((alien,index) => {
          return(<>{alien.map((i)=>{return(<>
                    <div className="bg-white rounded-lg text-center p-1 border shadow-lg shadow-green-500/30 hover:scale-105 font-bold hover:ease-in-out duration-300 md:p-4 md:max-h-fit"  key={i.id}>
           <img className="h-40 w-32"
