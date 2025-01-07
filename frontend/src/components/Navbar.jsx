@@ -70,7 +70,7 @@ function Navbar(){
         </div>
         </>)
       })}
-       {text=='' && load==true && items.map((alien,index) => {
+       {text=='' && items.map((alien,index) => {
          return(<>{alien.map((i)=>{return(<>
                    <div className="bg-white rounded-lg text-center p-1 border shadow-lg shadow-green-500/30 hover:scale-105 font-bold hover:ease-in-out duration-300 md:p-4 md:max-h-fit"  key={i.id}>
           <img className="h-40 w-32"
