@@ -43,7 +43,7 @@ function Navbar(){
       <div>
         <input type="text" value={text} onChange={(e)=>{
         setLoad(false)
-        setText(e.target.value)}} placeholder="Search for aliens..." className="m-4 md:w-96 bg-black rounded-md text-slate-100" />
+        setText(e.target.value)}} placeholder="Search for aliens..." className="m-4 md:w-96 focus:outline-none bg-black rounded-md text-slate-100" />
       </div>
     </div>
     <div className="my-2">
