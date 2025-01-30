@@ -12,7 +12,7 @@ function Navbar(){
    const [suboffset,setSuboffset]=useState(0);
    const [toggle,setToggle]=useState(false);
    const getaliens=async()=>{
-     const res=await fetch(`http://localhost:8000/aliens?offset=${offset}&limit=5`);
+     const res=await fetch(`https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens?offset=${offset}&limit=5`);
      const data =await res.json();
      setItems([...items,data.data]);
      setCount(data.length)
@@ -20,7 +20,7 @@ function Navbar(){
      setLoads(false);
    }
    const getname=async()=>{
-     const res=await fetch(`http://localhost:8000/api?name=${text}&offset=${suboffset}&limit=5`);
+     const res=await fetch(`https://miniature-toma-aliudufu-dfe931ca.koyeb.app/api?name=${text}&offset=${suboffset}&limit=5`);
      const data =await res.json();
      setLength(data.data.length)
      setDatas([...datas,data.data]);
