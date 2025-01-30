@@ -67,7 +67,7 @@ function Navbar(){
   <input type="text" value={text} onChange={(e)=>{setText(e.target.value)
      setDatas([])
      setLength(-1)
-  }} placeholder="Search for aliens..."  className="bg-black font-extrabold rounded-l-lg text-slate-200 focus:outline-none" />
+  }} placeholder="Search for aliens..."  className="bg-black font-bold rounded-l-lg text-slate-200 focus:outline-none" />
 <button className="text-white font-extrabold text-sm p-2 rounded-r-lg bg-slate-800" onClick={go}>Submit</button>
       </div>
     <div className="my-2">
