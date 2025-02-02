@@ -73,7 +73,7 @@ function Navbar(){
     <div className="my-2">
     {load==true && <>
       <div className=" w-full flex  justify-center align-center my-48  md:my-32">
-      <h1 className="font-bold " >Page is Loading...</h1>
+      <h1 className="font-bold " >Loading...</h1>
       </div>
     </>} 
     {
