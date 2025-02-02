@@ -96,7 +96,7 @@ function Navbar(){
          {index==datas.length-1 && 
          <div className="w-full flex justify-center">
       {suboffset<subcount-5 && loads==false && <img src="images/Blogo.png" className="w-8 h-8 md:w-12 md:h-12" onClick={subpress}></img>}
-    {loads==true && <div className="flex items-center font-bold"><p>Items are loading...</p></div> }
+    {loads==true && <div className="flex items-center font-bold"><p>Loading...</p></div> }
          </div>
          }
          </>)
@@ -118,7 +118,7 @@ function Navbar(){
          {index==items.length-1 && 
          <div className="w-full flex justify-center">
       {offset<count-5 && loads==false && <img src="images/Blogo.png" className="w-8 h-8 md:w-12 md:h-12" onClick={press}></img>}
-    {loads==true && <div className="flex items-center font-bold"><p>Items are loading...</p></div> }
+    {loads==true && <div className="flex items-center font-bold"><p>Loading...</p></div> }
          </div>
          }
          </>)
