@@ -221,13 +221,13 @@
   },
   {
         "id": 45,
-    "image": "https://static.wikia.nocookie.net/ben10/images/9/91/Standing_Wildvine.png/revision/latest?cb=20231208211748",
-    "name": "Wildvine"
+    "image": "https://static.wikia.nocookie.net/ben10/images/8/81/Waybad2.png/revision/latest?cb=20200518124144",
+    "name": "Way Bads"
   },
   {
         "id": 46,
-    "image": "https://static.wikia.nocookie.net/ben10/images/4/4e/Gax_Profile.png/revision/latest?cb=20240309075655",
-    "name": "Gax"
+    "image": "https://static.wikia.nocookie.net/ben10/images/0/0f/Vilgax_af_render-2.png/revision/latest?cb=20200907120920",
+    "name": "Vilgax"
   },
   {
         "id": 47,
@@ -328,5 +328,35 @@
         "id": 66,
     "image": "https://static.wikia.nocookie.net/ben10/images/7/7a/Whampire_facebook_profileT.png/revision/latest?cb=20171022040815",
     "name": "Whampire"
+  },
+    {
+        "id": 67,
+    "image": "https://static.wikia.nocookie.net/ben10/images/3/37/Yetta.png/revision/latest?cb=20140718202713",
+    "name": "Yetta"
+  },
+    {
+        "id": 68,
+    "image": "https://static.wikia.nocookie.net/ben10/images/7/75/Electric_jorts.png/revision/latest?cb=20200615035826",
+    "name": "Zzzakt"
+  },
+    {
+        "id": 69,
+    "image": "https://static.wikia.nocookie.net/ben10/images/c/ce/Vexx_ren.png/revision/latest?cb=20210515161702",
+    "name": "Vexx"
+  },
+    {
+        "id": 70,
+    "image": "https://static.wikia.nocookie.net/ben10/images/a/a4/Ventrilosquid_no_background.png/revision/latest?cb=20210417232427",
+    "name": "Ventrilosquid"
+  },
+    {
+        "id": 71,
+    "image": "https://static.wikia.nocookie.net/ben10/images/b/b6/Viktor_model.png/revision/latest?cb=20200527132503",
+    "name": "Dr.Viktor"
+  },
+    {
+        "id":72,
+    "image": "https://static.wikia.nocookie.net/ben10/images/2/2b/Sunder_OV.png/revision/latest?cb=20210515162506",
+    "name": "Sunder"
   }
 ]

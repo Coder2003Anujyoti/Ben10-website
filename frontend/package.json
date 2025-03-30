@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "dom": "^0.0.3",
+    "fireworks-js": "^2.10.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.4.1",

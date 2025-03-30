@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import {Link} from 'react-router-dom'
 import {HashLink} from 'react-router-hash-link'
 const Site = () => {
-  const teams=["Mi","Csk","Rr","Kkr","Gt","Pbks","Rcb","Lsg","Dc","Srh"];
+  const teams=["GG","UY","UMU","TTS","TT","PPN","PP","BB","JPP","BW","DD","HS"];
   const [load,setLoad]=useState(true);
   const [value,setValue]=useState([]);
   const [toggle,setToggle]=useState(false);
@@ -37,16 +37,18 @@ const get_data=async()=>{
 <div id="services" className="w-full flex-col mt-2 flex text-center justify-center border-b border-b-green-600">
       <h3 className="text-lg text-gray-900 font-bold">Services</h3>
  <div className="w-full py-4 flex flex-wrap gap-x-6 gap-y-4 items-center justify-center">
- <HashLink to='/navbar'>
+ <HashLink smooth to='/navbar'>
     <div className="text-center w-36 h-36 flex justify-center rounded-lg  bg-green-500 flex flex-col gap-y-2 ">
    <div className="w-full  flex justify-center"><img src="Icons/search.png" className="w-20 h-20"></img></div>
     <h4 className="text-lg text-gray-900 font-bold">Search</h4>
     </div>
     </HashLink>
+    <HashLink smooth to="/auction">
     <div className="text-center w-36 h-36 flex justify-center bg-green-500 rounded-lg bg flex flex-col gap-y-2 ">
    <div className="w-full  flex justify-center"><img src="Icons/game.png" className="w-20 h-20"></img></div>
     <h4 className="text-lg text-gray-900 font-bold">Game</h4>
     </div>
+    </HashLink>
     </div>
     </div>
       <div id="gallery" className="w-full py-2 my-4 flex-col flex justify-center  items-center text-center p-2 gap-2">
@@ -65,19 +67,19 @@ const get_data=async()=>{
       <div className="w-full flex justify-center  text-center flex-col">
         <h2 className="text-xl mt-2 font-semibold">Quick Links</h2>
         <ul className="mt-4 flex flex-row flex-wrap justify-center gap-x-12">
-    <li className="text-gray-400">
-       About Us</li>
-     <li className="text-gray-400">Services</li>
-     <li className="text-gray-400">Gallery</li>
+     <HashLink smooth to='#about'>   <li className="text-gray-400">
+       About Us</li></HashLink>
+      <HashLink smooth to='#services'>   <li className="text-gray-400">Services</li></HashLink>
+        <HashLink smooth to='#gallery'> <li className="text-gray-400">Gallery</li></HashLink>
         </ul>
      </div>
           <div className="w-full flex justify-center  text-center flex-col mt-4">
         <h2 className="text-xl font-semibold">Teams</h2>
         <ul className="mt-4 flex flex-row flex-wrap justify-center gap-x-6 gap-y-4">
-        {new Array(11).fill("").map((i,ind)=>{
+        {teams.map((i,ind)=>{
           return(<>
           <li>
-         <img className="w-12 h-12" src={`Teams/${100+ind+1}.webp`}/></li>
+         <img className="w-12 h-12" src={`teams/${i}.webp`}/></li>
           </>)
         })}
         </ul>
