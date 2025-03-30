@@ -9,15 +9,27 @@ function Navbar(){
    const [loads,setLoads]=useState(false);
    const [offset,setOffset]=useState(0);
    const [load,setLoad]=useState(true);
+   const [chance,setChance]=useState(true)
    const [suboffset,setSuboffset]=useState(0);
    const [toggle,setToggle]=useState(false);
    const getaliens=async()=>{
+   if(offset===0){
      const res=await fetch(`https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens?offset=${offset}&limit=5`);
      const data =await res.json();
      setItems([...items,data.data]);
      setCount(data.length)
      setLoad(false);
      setLoads(false);
+    setTimeout(()=>setChance(false),1000)
+     }
+     else{
+   const res=await fetch(`https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens?offset=${offset}&limit=5`);
+     const data =await res.json();
+     setItems([...items,data.data]);
+     setCount(data.length)
+     setLoad(false);
+     setLoads(false);
+     }
    }
    const getname=async()=>{
      const res=await fetch(`https://miniature-toma-aliudufu-dfe931ca.koyeb.app/api?name=${text}&offset=${suboffset}&limit=5`);
@@ -30,6 +42,12 @@ function Navbar(){
      setToggle(false)
     
    }
+   useEffect(()=>{
+   if(chance===false)
+     document.body.className="bg-white"
+    else
+    document.body.className="bg-green-400"
+   })
    const press=()=>{
      setLoads(true);
      setOffset(offset+5)
@@ -55,9 +73,19 @@ function Navbar(){
      getname()
    },[toggle])
    useEffect(()=>{
+  window.scrollTo({ top: 0, behavior: "smooth" });
+   },[])
+   useEffect(()=>{
        getaliens()
    },[offset])
   return(<>
+    {chance==true && <>
+    <div className="w-full flex flex-col items-center justify-center my-40 gap-y-6 bg-green-400">
+    <img src="images/Ben.png" className="w-36 h-36" />
+    <img src="images/CN.png" className="w-36 h-36" />
+    </div>
+  </>}
+  {chance===false && <>
     <div className="w-full h-16 bg-green-600 flex items-center gap-x-6 md:gap-x-64">
       <div>
         <img src="images/Ben.png" className="w-16 h-16 m-2"/>
@@ -133,6 +161,7 @@ function Navbar(){
   </div>
   </>}
     </div>
+    </>}
   </>);
 }
 export default Navbar;
