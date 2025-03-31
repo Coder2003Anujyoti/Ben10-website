@@ -36,8 +36,18 @@ const LocalVersus=()=>{
     return [];
 }
 }
+const LocalPlayers=()=>{
+  const lists=localStorage.getItem('pklretain');
+  if(lists){
+    return JSON.parse(lists);
+  }
+  else{
+    return [];
+}
+}
 const Auction= () => {
 const [fixture,setFixture]=useState(()=>LocalFixtures()||[])
+const [retains,setRetains]=useState(()=>LocalPlayers()||[]);
 const [venue,setVenue]=useState([])
 const [start,setStart]=useState(false)
   const [versus,setVersus]=useState(()=>LocalVersus()||[])
@@ -71,7 +81,6 @@ const [start,setStart]=useState(false)
 const response=await fetch("http://localhost:8000/aliens/");
   const item= await response.json();
   const k=item.data.length
-  alert(fixture.map((i)=>i.player+""+i.computer))
  const m= Math.floor(Math.random()*k)
   setValue(item.data)
   setAmount(Math.floor(Math.random()*100)+1)
@@ -396,6 +405,9 @@ it.players.map((i)=>{
   useEffect(()=>{
     const empty=computers.every((i)=>i.players.length===6);
     if(empty===true){
+       localStorage.removeItem('pklretain');
+      localStorage.setItem('pklretain', 
+      JSON.stringify(computers));
       localStorage.setItem('pklfixtures', 
       JSON.stringify(fixture));
       localStorage.setItem('pkloppos', 
@@ -407,6 +419,7 @@ it.players.map((i)=>{
   },[computers])
   const clears=()=>{
    window.scrollTo({ top: 0, behavior: "smooth" });
+    localStorage.removeItem('pklretain');
    localStorage.removeItem('pkluser');
    localStorage.removeItem('pklteam');
    localStorage.removeItem('pklstandings');
@@ -415,12 +428,72 @@ it.players.map((i)=>{
    localStorage.removeItem('pklwinlist');
    localStorage.removeItem('pklwinnerlist');
    window.location.reload();
+   setRetains([])
    setPlaying(false)
    setVersus([])
    setFixture([])
    setStore([]);
    setLoad(true);
   }
+  const add_retain=(x)=>{
+    const drdata=value.filter((i)=>i.name!=x.name)
+    setComputers((prevTeams) =>
+      prevTeams.map((team) =>
+        team.team === x.team
+          ? { ...team, players: [...team.players,{name:x.name,image:x.image,bid:0,matches:0,raids:0,defends:0,team:x.team}] }
+          : team
+      )
+    );
+    setValue(drdata);
+    setPlayers([...players,x.name])
+    setAmount(Math.floor(Math.random()*100)+1)
+  setIndex(Math.floor(Math.random()*drdata.length))
+  setRetaincount(-1)
+  }
+  useEffect(()=>{
+  if(retaincount===-1){
+      setComputers((prevTeams) => {
+  let assigned = []; // Keep track of assigned players globally
+
+  let updatedTeams = prevTeams.map((team) => {
+    if (team.team === playerteam) return team; // Skip player's team
+
+    let newPlayers = [...team.players];
+    const iota=Math.floor(Math.random()*3)+1;
+    retains.flatMap((i)=>i.players).slice().sort((a,b)=>(Math.random() > 0.5 ? a.name.localeCompare(b.name) :
+  b.name.localeCompare(a.name))).forEach((player) => {
+      if (!players.includes(player.name) && player.team===team.team && newPlayers.length < 1) {
+        newPlayers.push({
+          name: player.name,
+          image: player.image,
+          bid: 0,
+          matches:0,
+          raids: 0,
+          defends: 0,
+          team:player.team,
+        });
+        assigned.push(player.name); // Track assigned players globally
+      }
+    });
+
+    return { ...team, players: newPlayers };
+  });
+
+  // Remove assigned players **after** teams are updated
+  setValue(value.filter((player) => !assigned.includes(player.name)));
+
+  return updatedTeams;
+});
+setRetaincount(2)
+  }
+  if(retaincount===2){
+    setAmount(Math.floor(Math.random()*100)+1)
+  setIndex(Math.floor(Math.random()*value .length))
+  setValue(value)
+  setRetaincount(1)
+  }
+    
+  },[retaincount])
   return (
   <>
       {load==true && <>
@@ -448,7 +521,31 @@ it.players.map((i)=>{
 </div>
 </div>
 </>}
-{ playerteam!=='' && <>
+{
+  playerteam!='' && retains.length>0 && retaincount===0 && <>
+       <div className="flex p-4  flex-col justify-center items-center text-center gap-4">
+     <h1 className="text-lg text-gray-900 font-bold">Pick 1 player as Retention</h1>
+       <img src={`teams/${playerteam}.webp`} className="w-24 h-24" />
+     </div>
+   <div className="w-full flex p-4 flex-wrap flex-row justify-center gap-2 my-4">
+     {
+       retains.flatMap((i)=>i.players).map((i)=>{
+       if(i.team===playerteam)
+         return(<>
+    <div onClick={()=>add_retain(i)} className="p-4 flex flex-col gap-1 rounded-lg bg-green-500 text-center justify-center items-center transition duration-300 ease-in-out transform hover:bg-green-500 hover:scale-105">
+    <div className="flex justify-center items-center"><img src={Array.from(i.image).reverse().slice(33).reverse().join("")} className="w-16 h-16" /></div>
+    <p className="text-gray-900 text-xs font-bold">{i.name}</p>
+           </div>
+         </>)
+       })
+     }
+     </div>
+         <div className="w-full py-2 flex-col  flex justify-center items-center text-center">
+    <div className="rounded-lg p-2 w-24 bg-green-500 flex items-center justify-center"><button onClick={clears} className="font-bold text-base text-gray-900">Restart</button></div>
+  </div>
+  </>
+}
+{ playerteam!=='' && (retains.length===0 || retaincount==1) && <>
 <div className="w-full flex flex-row items-center gap-y-2 my-2 justify-end">
    <img src="Icons/wallet.png" className="w-10 h-10"/>
      <p className="text-base font-bold text-gray-900">{purse+""+"L"}</p>
@@ -517,7 +614,7 @@ it.players.map((i)=>{
     </div>
 </>
 }
-{playerteam!=''   && <>
+{playerteam!=''  && (retains.length===0 || retaincount==1)  && <>
 <div className="w-full  flex flex-wrap gap-x-6 gap-y-4 items-center justify-center py-10 flex-row">
   {teams.map((i)=>{
   return(

@@ -44,7 +44,12 @@ function Navbar(){
    }
    useEffect(()=>{
    if(chance===true)
+   {
     document.body.className="bg-green-400"
+    }
+    else{
+      document.body.className="bg-white"
+    }
    })
    const press=()=>{
      setLoads(true);

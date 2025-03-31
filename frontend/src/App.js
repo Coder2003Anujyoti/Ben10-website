@@ -6,6 +6,7 @@ import Auction from "./play/Auction.jsx";
 import Teams from "./play/Teams.jsx";
 import Stats from "./play/Stats.jsx";
 import Fixtures from "./play/Fixtures.jsx";
+import Game from "./play/Game.jsx";
 const App = () => {
   return (
     <Router>
@@ -16,6 +17,7 @@ const App = () => {
 <Route path="/teams" element={<Teams  />} /> 
 <Route path="/stats" element={<Stats  />} />
 <Route path="/fixtures" element={<Fixtures  />} />
+<Route path="/game" element={<Game   />} />
       </Routes>
     </Router>
   );

@@ -52,12 +52,6 @@ const Home = ({playerteam,store,localremove,fixture}) => {
   const losers=win.filter((i)=>i.win!==playerteam);
   const totalwinners=match.filter((i)=>i.win===playerteam);
   const totallosers=match.filter((i)=>i.win!==playerteam);
-  const motms=store.map((i)=>{
-    return i.players.slice().sort((a,b)=>(b.runs+b.wickets)-(a.runs+a.wickets)).filter((i,ind)=> ind===0)[0]
-  });
-  const potm=motms.slice().sort((a,b)=>(b.runs+b.wickets)-(a.runs+a.wickets));
-  const batters=store.flatMap((i)=>i.players).slice().sort((a,b)=>b.runs-a.runs)
-  const bowlers=store.flatMap((i)=>i.players).slice().sort((a,b)=>b.wickets-a.wickets)
   const sellers=store.flatMap((i)=>i.players).slice().sort((a,b)=>(b.bid)-(a.bid)).filter((i,ind)=>ind<5)
 const selldata = {
     labels: sellers.map(() => ""), // Hide y-axis text
@@ -216,12 +210,12 @@ const barChartData = {
  stand.push({name:i,matches:matches,win:wins,lose:matches-(wins+draw),draw:draw})
    return stand
    })
-   localStorage.setItem('standings', 
+   localStorage.setItem('pklstandings', 
       JSON.stringify(stand));
       setStandings(stand)
    
  }
-    if(win.length>0 && win.length<9){
+    if(win.length>0 && win.length<11){
       const k=fixtures.map((i)=>{
         if(i.winner=="" && ((i.player===win[win.length-1].player && i.computer===win[win.length-1].computer)||(i.computer===win[win.length-1].player && i.player===win[win.length-1].computer))){
           i.winner=win[win.length-1].win;
@@ -238,14 +232,14 @@ const barChartData = {
  stand.push({name:i,matches:matches,win:wins,lose:matches-(wins+draw),draw:draw})
    return stand
    })
-   localStorage.setItem('standings', 
+   localStorage.setItem('pklstandings', 
       JSON.stringify(stand));
-      localStorage.setItem('fixtures', 
+      localStorage.setItem('pklfixtures', 
       JSON.stringify(k));
       setStandings(stand)
       setFixtures(k)
     }
-    if(win.length==9){
+    if(win.length==11){
       const k=fixtures.map((i)=>{
         if(i.winner=="" && ((i.player===win[win.length-1].player && i.computer===win[win.length-1].computer)||(i.computer===win[win.length-1].player && i.player===win[win.length-1].computer))){
           i.winner=win[win.length-1].win;
@@ -260,9 +254,9 @@ const barChartData = {
  stand.push({name:i,matches:matches,win:wins,lose:matches-(wins+draw),draw:draw})
    return stand
    })
-   localStorage.setItem('standings', 
+   localStorage.setItem('pklstandings', 
       JSON.stringify(stand));
-      localStorage.setItem('fixtures', 
+      localStorage.setItem('pklfixtures', 
       JSON.stringify(k));
       setStandings(stand)
       setFixtures(k)
@@ -270,7 +264,7 @@ const barChartData = {
   },[win])
   return (
    <>
-   {showCelebration===true && (win.length<=10 || (win.length===11 && win[win.length-1].win!==playerteam)) && <>
+   {showCelebration===true && (win.length<=12 || (win.length===13 && win[win.length-1].win!==playerteam)) && <>
     <div className="flex py-2 my-4 overflow-hidden flex-col items-center justify-center text-white text-center">
       {/* Fireworks */}
       {showCelebration && <Confetti width={width} height={height} />}
@@ -312,7 +306,7 @@ const barChartData = {
     </div>
   </>}
   {
-    showCelebration===true && win.length===11 && win[win.length-1].win===playerteam &&  <>
+    showCelebration===true && win.length===13 && win[win.length-1].win===playerteam &&  <>
          <div className="flex py-2 my-4 overflow-hidden flex-col items-center justify-center  text-white text-center">
       {/* Fireworks */}
       {showCelebration && <Confetti width={width} height={height} />}
@@ -365,57 +359,44 @@ const barChartData = {
    <img src="images/Ben.png" className="w-16 h-16 m-2"/>
       </div>
   {
-    win.length>=9 && <>
-      {win[win.length-1].win===playerteam && win.length===11 && <>
-    <div className="flex flex-row flex-wrap gap-x-12 gap-y-6 justify-center w-full">
-        <div className=" flex flex-col justify-center text-center gap-y-6">
+    win.length>=11 && <>
+      {win[win.length-1].win===playerteam && win.length===13 && <>
+        <div className=" w-full flex flex-col justify-center text-center gap-y-6">
          <div className="w-full flex justify-center mt-14"><img className="w-32 h-32" src="Icons/trophy-star.png" /></div>
           <h1 className="font-bold text-gray-900">Champions</h1>
         </div>
-        <div className=" my-3 flex flex-col gap-y-6 justify-center text-center">
-          <h1 className="text-sm font-extrabold text-gray-900">Player of the Tournament</h1> 
-     <div className="w-full flex justify-center"><img className="w-36 h-36" src={potm[0].image} /></div>
-     <h1 className="text-sm font-extrabold text-gray-900">{potm[0].name}</h1> 
-    </div>
-    </div>
     <Fire  show={true} />
       </>
       }
       {
-  ( ( win.length===9 && !standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || (win.length===10 && win[win.length-1].win!==playerteam) || (win.length===11 && win[win.length-1].win!==playerteam)) && <>
-     <div className="flex flex-row flex-wrap gap-x-12 gap-y-6 justify-center w-full ">
-        <div className=" flex flex-col justify-center text-center gap-y-6">
+  ( ( win.length===11 && !standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || (win.length===12 && win[win.length-1].win!==playerteam) || (win.length===13 && win[win.length-1].win!==playerteam)) && <>
+        <div className="w-full flex flex-col justify-center text-center gap-y-6">
          <div className="w-full flex justify-center mt-14"><img className="w-32 h-32" src="Icons/dislikes.png" /></div>
           <h1 className="font-bold text-gray-900">Loser</h1>
         </div>
-       <div className="my-3 flex flex-col gap-y-6 justify-center text-center">
-          <h1 className="text-sm font-extrabold text-gray-900">Player of the Tournament</h1> 
-     <div className="w-full flex justify-center"><img className="w-36 h-36" src={potm[0].image} /></div>
-     <h1 className="text-sm font-extrabold text-gray-900">{potm[0].name}</h1> 
-    </div>
-    </div>
       </>
       }
     </>
   }
-  { win.length<9 && <>
+  { win.length<11 && <>
  <div className="w-full text-center my-2">
   <h3 className="font-bold text-sm text-gray-900 ml-2 mr-2">*Need to become top 4 to reach knockouts.</h3>
 </div>
 </>}
-  { ((win.length===9 && standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || 
- (win.length===10 && win[win.length-1].win===playerteam)) && <>
+  { ((win.length===11 && standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || 
+ (win.length===12 && win[win.length-1].win===playerteam)) && <>
         <div className="w-full flex flex-col justify-center text-center gap-y-6 py-6">
           <h1 className="font-bold text-sm ml-2 mr-2 text-gray-900">Welcome to Knockouts</h1>
         </div>
 </>}
      <div className="w-full my-16 flex flex-wrap gap-x-12 gap-y-12 items-center justify-center flex-row">
-  {(win.length<9 || (win.length===9 && standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || (win.length===10 && win[win.length-1].win===playerteam))  && <>
-
+  {(win.length<11 || (win.length===11 && standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || (win.length===12 && win[win.length-1].win===playerteam))  && <>
+     <HashLink to={`/game?data=${encodeURIComponent(JSON.stringify(stores))}&&team=${encodeURIComponent(JSON.stringify(playerteam))}`}>
      <div className="text-center p-4 rounded-lg  bg-green-500">
     <img src="Icons/joystick.png" className="w-24 h-24"></img>
     <h4 className="text-lg text-gray-900 font-bold">Play</h4>
     </div>
+    </HashLink>
     </>}
   <HashLink to={`/teams?data=${encodeURIComponent(JSON.stringify(stores))}&&team=${encodeURIComponent(JSON.stringify(playerteam))}`}>
      <div className="text-center p-4 rounded-lg  bg-green-500">
@@ -437,7 +418,7 @@ const barChartData = {
   </HashLink>
     </div>
             <div className="max-w-2xl mx-auto p-4 bg-green-400 text-white">
-      <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">UCL 2025 Points Table</h2>
+      <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">PKL 2025 Points Table</h2>
       
       <table className="w-full border-collapse">
         <thead>
@@ -469,18 +450,7 @@ const barChartData = {
         </tbody>
       </table>
     </div>
-      { win.length>=9 && (( win.length===9 && !standings.slice().sort((a,b)=>b.win-a.win).filter((i,ind)=>ind<4).map((i)=>i.name).includes(playerteam)) || (win.length===10 && win[win.length-1].win!==playerteam) || (win.length===11 && win[win.length-1].win!==playerteam) || (win[win.length-1].win===playerteam && win.length===11)) && <>
-     <div className="flex flex-row flex-wrap gap-x-12 gap-y-6 p-2 justify-center w-full ">
-    <div className="flex flex-col  gap-y-4 justify-center text-center">
-    <h1 className="text-sm font-extrabold text-yellow-400 ">Top Batter</h1> 
-     <div className="w-full flex justify-center"><img className="w-36 h-36" src={batters[0].image} loading="lazy" /></div>
-     <h1 className="text-sm font-extrabold text-yellow-400">{batters[0].name}</h1> </div>
-        <div className="flex flex-col  gap-y-4 justify-center text-center">
-        <h1 className="text-sm font-extrabold text-yellow-400 ">Top Bowler</h1> 
-     <div className="w-full flex justify-center"><img className="w-36 h-36" src={bowlers[0].image} loading="lazy"/></div>
-     <h1 className="text-sm font-extrabold text-yellow-400">{bowlers[0].name}</h1> </div>
-        </div>
-      </>}
+
       <div className="flex p-4 flex-row justify-center  gap-4">
        <img src={`teams/${playerteam}.webp`} className="w-28 h-28" />
      </div>

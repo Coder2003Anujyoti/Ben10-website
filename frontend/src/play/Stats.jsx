@@ -15,14 +15,14 @@ const Stats = () => {
   const data = JSON.parse(decodeURIComponent(queryParams.get("data"))) || [];
   const team=JSON.parse(decodeURIComponent(queryParams.get("team"))) || "";
     const fil=data.filter((i)=>i.team===team);
-    const filterruns=fil[0].players.slice().sort((a,b)=>b.runs-a.runs).filter((i,ind)=>ind<6);
-    const filterwickets=fil[0].players.slice().sort((a,b)=>b.wickets-a.wickets).filter((i,ind)=>ind<6);
+    const filterruns=fil[0].players.slice().sort((a,b)=>b.raids-a.raids).filter((i,ind)=>ind<6);
+    const filterwickets=fil[0].players.slice().sort((a,b)=>b.defends-a.defends).filter((i,ind)=>ind<6);
     const histogramRuns = {
   labels: filterruns.map((batter)=> batter.name),
   datasets: [
     {
-      label: "Runs Scored",
-      data: filterruns.map((batter) => batter.runs),
+      label: "Raids Scored",
+      data: filterruns.map((batter) => batter.raids),
       backgroundColor: "#3b82f6", // Blue color
       borderWidth: 1,
       borderRadius: 5,
@@ -33,8 +33,8 @@ const histogramWickets = {
   labels: filterwickets.map((batter) => batter.name),
   datasets: [
     {
-      label: "Wickets Scored",
-      data: filterwickets.map((batter) => batter.wickets),
+      label: "Defends Scored",
+      data: filterwickets.map((batter) => batter.defends),
       backgroundColor: "#3b82f6", // Blue color
       borderWidth: 1,
       borderRadius: 5,
@@ -82,13 +82,13 @@ const histogramOptions = {
        data.map((it)=>{
        if(it.team===team)
          return(<>
-      {it.players.slice().sort((a,b)=>b.runs-a.runs).map((i,ind)=>{
+      {it.players.slice().sort((a,b)=>b.raids-a.raids).map((i,ind)=>{
         if(ind<6)
         return(<>
     <div className="p-4 flex flex-col gap-1 rounded-lg bg-green-500 text-center justify-center items-center transition duration-300 ease-in-out transform hover:bg-green-500  hover:scale-105">
     <div className="flex justify-center items-center"><img src={Array.from(i.image).reverse().slice(33).reverse().join("")} className="w-16 h-16" /></div>
     <p className="text-gray-900 text-xs font-bold">{i.name}</p>
-        <p className="text-gray-900 text-xs font-bold">Raid-:{i.raids}</p>
+        <p className="text-gray-900 text-xs font-bold">Raids-:{i.raids}</p>
            </div>
           
         </>)
@@ -109,13 +109,13 @@ const histogramOptions = {
        data.map((it)=>{
        if(it.team===team)
          return(<>
-      {it.players.slice().sort((a,b)=>b.wickets-a.wickets).map((i,ind)=>{
+      {it.players.slice().sort((a,b)=>b.defends-a.defends).map((i,ind)=>{
         if(ind<6)
         return(<>
     <div className="p-4 flex flex-col gap-1 rounded-lg bg-green-500 text-center justify-center items-center transition duration-300 ease-in-out transform hover:bg-green-500  hover:scale-105">
     <div className="flex justify-center items-center"><img src={Array.from(i.image).reverse().slice(33).reverse().join("")} className="w-16 h-16" /></div>
     <p className="text-gray-900 text-xs font-bold">{i.name}</p>
-         <p className="text-gray-900 text-xs font-bold">Defend-:{i.defends}</p>
+         <p className="text-gray-900 text-xs font-bold">Defends-:{i.defends}</p>
            </div>
           
         </>)
