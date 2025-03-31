@@ -78,7 +78,7 @@ const [start,setStart]=useState(false)
   var setteams=["GG","UY","UMU","TTS","TT","PPN","PP","JPP","DD","BB","BW","HS"];
   var details=[{team:"GG",players:[]},{team:"UY",players:[]},{team:"UMU",players:[]},{team:"TTS",players:[]},{team:"TT",players:[]},{team:"PPN",players:[]},{team:"PP",players:[]},{team:"JPP",players:[]},{team:"DD",players:[]},{team:"BB",players:[]},{team:"BW",players:[]},{team:"HS",players:[]}]
   const get_data=async()=>{
-const response=await fetch("http://localhost:8000/aliens/");
+const response=await fetch("https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens/");
   const item= await response.json();
   const k=item.data.length
  const m= Math.floor(Math.random()*k)

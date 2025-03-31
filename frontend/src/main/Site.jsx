@@ -7,7 +7,7 @@ const Site = () => {
   const [value,setValue]=useState([]);
   const [toggle,setToggle]=useState(false);
 const get_data=async()=>{
-  const response=await fetch("https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens");
+  const response=await fetch("https://miniature-toma-aliudufu-dfe931ca.koyeb.app/aliens/");
   const item= await response.json();
   setValue(item.data)
   setTimeout(()=>setLoad(false),1000)
