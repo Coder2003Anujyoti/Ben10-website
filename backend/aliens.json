@@ -358,5 +358,75 @@
         "id":72,
     "image": "https://static.wikia.nocookie.net/ben10/images/2/2b/Sunder_OV.png/revision/latest?cb=20210515162506",
     "name": "Sunder"
+  },
+      {
+        "id":73,
+    "image": "https://static.wikia.nocookie.net/ben10/images/2/25/OfficialAzmuth.png/revision/latest?cb=20141116195120",
+    "name": "Azmuth"
+  },
+      {
+        "id":74,
+    "image": "https://static.wikia.nocookie.net/ben10/images/2/27/Universal_Court_Highbreed.png/revision/latest?cb=20141115152710",
+    "name": "Bailiff"
+  },
+      {
+        "id":75,
+    "image": "https://static.wikia.nocookie.net/ben10/images/d/d3/UltimateAlienChamAlien.png/revision/latest?cb=20190820072643",
+    "name": "Chamalien"
+  },
+      {
+        "id":76,
+    "image": "https://static.wikia.nocookie.net/ben10/images/f/f4/FasttrackUAOfficial.png/revision/latest?cb=20240512052124",
+    "name": "Fasttrack"
+  },
+        {
+        "id":77,
+    "image": "https://static.wikia.nocookie.net/ben10/images/2/22/Grack_Model.png/revision/latest?cb=20210515170349",
+    "name": "Grack"
+  },
+        {
+        "id":78,
+    "image": "https://static.wikia.nocookie.net/ben10/images/5/54/Kenko_ov.png/revision/latest?cb=20190919070752",
+    "name": "Kenko"
+  },
+        {
+        "id":79,
+    "image": "https://static.wikia.nocookie.net/ben10/images/5/53/JerryOV.png/revision/latest?cb=20211115172147",
+    "name": "Jerry"
+  },
+        {
+        "id":80,
+    "image": "https://static.wikia.nocookie.net/ben10/images/4/4a/77.png/revision/latest?cb=20200531141916",
+    "name": "SevenSeven"
+  },
+        {
+        "id":81,
+    "image": "https://static.wikia.nocookie.net/ben10/images/4/4c/Starbeard_official.png/revision/latest?cb=20141113161202",
+    "name": "Starbeard"
+  },
+        {
+        "id":82,
+    "image": "https://static.wikia.nocookie.net/ben10/images/0/05/Psyphon_OV.png/revision/latest?cb=20210515162917",
+    "name": "Psyphon"
+  },
+        {
+        "id":83,
+    "image": "https://static.wikia.nocookie.net/ben10/images/d/d9/Vulcanus_AF.png/revision/latest?cb=20150808134542",
+    "name": "Vulkanus"
+  },
+        {
+        "id":84,
+    "image": "https://static.wikia.nocookie.net/ben10/images/2/2c/Hex.png/revision/latest?cb=20170706110154",
+    "name": "Hex"
+  },
+        {
+        "id":85,
+    "image": "https://static.wikia.nocookie.net/ben10/images/8/81/DNAliens.png/revision/latest?cb=20210319230054",
+    "name": "DNAlien"
+  },
+        {
+        "id":86,
+    "image": "https://static.wikia.nocookie.net/ben10/images/d/da/Rook_Blonko_Model.png/revision/latest?cb=20231206005303",
+    "name": "Rook Blonko"
   }
 ]
